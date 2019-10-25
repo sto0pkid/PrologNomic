@@ -13,10 +13,11 @@ submit_move(Request) :-
 	member(search(Options), Request),
 	member(player=Player, Options),
 	member(move=Move_String, Options),
+	term_string(Move, Move_String),
 	findall(
 		Output_String,
 		(
-			run_atom(Player, Move_String, Result),
+			run(Player, Move, Result),
 			format(string(Output_String),"~w",[Result])
 		),
 		Output
