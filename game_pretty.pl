@@ -13,31 +13,32 @@ mi((A,B), Vars) :-
 	mi(A, Vars),
 	mi(B, Vars).
 
+mi((A=B), _Vars) :-
+	!,
+	A = B.
+
 mi(assert(Rule), Vars) :-
 	!,
 	(
 		Rule = (Head :- Body)
 	->
-		(
-			\+predicate_property(Head, built_in),
-			assertz_with_names(rule(Head :- Body), Vars)
-		)
+		true
 	;
-		(
-			\+predicate_property(Rule, built_in),
-			assertz_with_names(rule(Rule :- true), Vars)
-		)
-	).
+		(Rule = Head, Body = true)
+	),
+	\+predicate_property(Head, built_in),
+	assertz_with_names(rule(Head :- Body), Vars).
 
 mi(retract(Rule), Vars) :-
 	!,
 	(
 		Rule = (Head :- Body)
 	->
-		retract_with_names(rule(Head :- Body), Vars)
+		true
 	;
-		retract_with_names(rule(Rule :- true), Vars)
-	).
+		(Rule = Head, Body = true)
+	),
+	retract_with_names(rule(Head :- Body), Vars).
 
 mi(Goal, Vars) :-
 	rule(Goal :- Body),
