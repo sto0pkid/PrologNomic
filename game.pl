@@ -7,11 +7,12 @@ rule(is_valid(_,_) :- true).
 mi(true) :- !.
 
 mi((A,B)) :-
+	!,
 	mi(A),
-	mi(B),
-	!.
+	mi(B).
 
 mi(assertz(Rule)) :-
+	!,
 	(
 		Rule = (Head :- Body)
 	->
@@ -24,18 +25,17 @@ mi(assertz(Rule)) :-
 			\+predicate_property(Rule, built_in),
 			assertz(rule(Rule :- true))
 		)
-	),
-	!.
+	).
 
 mi(retract(Rule)) :-
+	!,
 	(
 		Rule = (Head :- Body)
 	->
 		retract(rule(Head :- Body))
 	;
 		retract(rule(Rule :- true))
-	),
-	!.
+	).
 
 mi(Goal) :-
 	rule(Goal :- Body),
