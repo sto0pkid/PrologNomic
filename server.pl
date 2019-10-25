@@ -33,8 +33,7 @@ get_rules(Rules) :-
 	findall(
 		Rulestring,
 		(
-			rule(Rule),
-			pretty_rule(Rule),
+			kb_clause(Rule),
 			format(string(Rulestring), "~w", [Rule])
 		),
 		Rules
