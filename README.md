@@ -15,7 +15,7 @@ then the move `loves(alice,What)` will return the results:
 
 ```
 loves(alice,tacos)
-`loves(alice,burritos)
+loves(alice,burritos)
 ```
 
 Variables are represented as uppercase terms, for example in `loves(alice,What)`, the term alice is a literal term, but the term What is a variable that can match with any other term.
