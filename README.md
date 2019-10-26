@@ -5,21 +5,18 @@ A Nomic game platform based on SWI-Prolog.
 ### How to Play
 A move is made by submitting any Prolog code (actually only a limited fragment of Prolog is supported). The "Current Rules" represent the current Prolog knowledge-base. A move is a query against this knowledge base. For example, if the current ruleset is:
 
-`
+```
 loves(alice,tacos)
-
 loves(alice,burritos)
-
 loves(bob,pancakes)
-`
+```
 
 then the move `loves(alice,What)` will return the results:
 
-`
+```
 loves(alice,tacos)
-
-loves(alice,burritos)
-`
+`loves(alice,burritos)
+```
 
 Variables are represented as uppercase terms, for example in `loves(alice,What)`, the term alice is a literal term, but the term What is a variable that can match with any other term.
 
