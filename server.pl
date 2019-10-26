@@ -39,6 +39,3 @@ get_rules(Rules) :-
 		),
 		Rules
 	).
-
-
-%:- initialization(http_daemon).

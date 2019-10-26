@@ -78,5 +78,40 @@
 </div>
 <br>
 <br>
+<div>
+<h2>How to Play</h2>
+A move is made by submitting any Prolog code (actually only a limited fragment of Prolog is supported). The "Current Rules" represent the current Prolog knowledge-base. A move is a query against this knowledge base. For example, if the current ruleset is:
+<br><br>
+<code>
+loves(alice,tacos)<br>
+loves(alice,burritos)<br>
+loves(bob,pancakes)
+</code>
+<br><br>
+then the move <code>loves(alice,What)</code> will return the results:
+<br><br>
+<code>
+loves(alice,tacos)<br>
+loves(alice,burritos)
+</code>
+<br><br>
+Variables are represented as uppercase terms, for example in <code>loves(alice,What)</code>, the term <code>alice</code> is a literal term, but the term <code>What</code> is a variable that can match with any other term.<br><br>
+
+If you want to assert a new fact or rule, you do so using the <code>assert</code> keyword. For example, the move <code>assert(loves(bob,waffles))</code> will add the fact <code>loves(bob,waffles)</code> to the current rule-set. If you want to retract a fact or rule, this can be done by using the <code>retract</code> keyword instead of <code>assert</code>.
+<br><br>
+Rules are represented using the <code>:-</code> keyword. For example:
+<br><br>
+<code>
+parent_of(Parent,Child) :- child_of(Child,Parent).
+</code>
+<br><br>
+This can be interpreted as saying, "If Child is the child of Parent, then Parent is the parent of Child."
+<br><br>
+Moves are guarded by the <code>is_valid</code> predicate. For any move, Move, by a player, Player, the following query will be executed against the current code-base: <code>is_valid(Player,Move)</code>. If this query succeeds, then the move will be executed, and otherwise it won't be. This predicate can be changed just like any other, and this is what makes it into a Nomic game instead of just a shared Prolog knowledge-base.
+<br><br>
+For more information on Prolog, there are many tutorials available online, for example <a href="https://en.wikibooks.org/wiki/Prolog/Introduction">https://en.wikibooks.org/wiki/Prolog/Introduction</a>
+</div>
+<br>
+<br>
 View on Github: <a href="https://github.com/sto0pkid/PrologNomic">https://github.com/sto0pkid/PrologNomic</a>
 </body>
