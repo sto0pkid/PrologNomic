@@ -24,4 +24,4 @@ escape_char('\\',['\\','\\']) :- !.
 escape_char('"',['\\','"']) :- !.
 escape_char(X,X).
 
-:- quine(X), read_term_from_atom(X, Quine_Rule, []), retract(Quine_Rule).
+%:- quine(X), read_term_from_atom(X, Quine_Rule, []), retract(Quine_Rule).
