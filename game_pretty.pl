@@ -6,49 +6,18 @@
 
 mi(true) :- !.
 
-mi((A,B)) :-
-	!,
-	mi(A),
-	mi(B).
+mi((A,B)) :- !, mi(A), mi(B).
 
-mi(assert(Rule)) :-
-	!,
-	(
-		Rule = (Head :- Body)
-	->
-		true
-	;
-		(Rule = Head, Body = true)
-	),
-	\+predicate_property(Head, built_in),
-	assert_kb_clause(Head :- Body).
+mi(assert(Rule)) :- !, assert_kb_clause(Rule).
 
-/* should maybe be direct string equivalence */
-mi(retract(Rule)) :-
-	!,
-	(
-		Rule = (Head :- Body)
-	->
-		true
-	;
-		(Rule = Head, Body = true)
-	),
-	retract_kb_clause(Head :- Body).
+mi(retract(Rule)) :- !, retract_kb_clause(Rule).
 
-mi(retractall(Rule)) :-
+mi(Head) :-
+	kb_clause(Head :- Body),
 	!,
-	(
-		Rule = (Head :- Body)
-	->
-		true
-	;
-		(Rule = Head, Body = true)
-	),
-	retractall_kb_clause(Head :- Body).
-
-mi(Goal) :-
-	kb_clause(Goal :- Body),
 	mi(Body).
+
+mi(Fact) :- kb_clause(Fact).
 
 run(Player, Goal, Result) :-
 	(
