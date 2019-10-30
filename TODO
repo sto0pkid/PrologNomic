@@ -3,17 +3,16 @@ two versions of retract:
 2. retract all matching
 
 player authentication
+* sessions for guests
+* public-key crypto
 
 game history in git repo
 * commit on move
 * allow forking of game through UI
-* game history as submodule?
-* or just a config file that points to a git repo URL / commit ?
+* game history as submodule
 * bootstrapping to current state from game history
 * current ruleset should just be a text document on each commit
 * repo of game templates
-
-current game listing -done?
 
 process move as transaction
 * i.e. it either all succeeds or nothing happens
