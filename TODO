@@ -13,6 +13,8 @@ game history in git repo
 * current ruleset should just be a text document on each commit
 * repo of game templates
 
+IRC bot
+
 current game listing -done?
 
 process move as transaction
@@ -20,7 +22,6 @@ process move as transaction
 * can this be implemented within the game?
 
 documentation
-* user tutorial
 * from-scratch dev tutorial
 
 better web UI

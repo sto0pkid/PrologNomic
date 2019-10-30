@@ -8,8 +8,10 @@
 :- http_handler(root(move), submit_move, []).
 :- http_handler(root(rules), return_rules, []).
 
+
+
+
 submit_move(Request) :-
-	format('Content-type: application/json~n~n'),
 	member(search(Options), Request),
 	member(player=Player, Options),
 	member(move=Move_String, Options),
@@ -23,13 +25,17 @@ submit_move(Request) :-
 		Output
 	),
 	get_rules(Rules),
-	json_write_dict(current_output, _{output:Output,rules:Rules}).
+	send_output(json(_{output:Output,rules:Rules})).
 
+% typed streams
+
+
+% rules_message + get_rules + send_output
 return_rules(_) :-
 	get_rules(Rules),
-	format('Content-type: application/json~n~n'),
-	json_write_dict(current_output, _{rules:Rules}).
+	send_output(json(_{rules:Rules})).
 
+% term-string instead of format
 get_rules(Rules) :-
 	findall(
 		Rulestring,

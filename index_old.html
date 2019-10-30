@@ -10,14 +10,17 @@
 		$( refreshRules );
 
 		function submitMove(){
+			var player = document.getElementById("player").value;
 			var move = document.getElementById("move").value;
 			$.ajax({
-				url: "request",
+				url: "move",
 				data: {
-					request: move
+					player: player,
+					move: move
 				},
 				success: function(response) {
-					displayResults(response.results);
+					displayResults(response.output);
+					displayRules(response.rules);
 				},
 				error: function(response) {
 					$("#results").html("error: " + JSON.stringify(response));
@@ -28,10 +31,8 @@
 
 		function refreshRules(){
 			$.ajax({
-				url: "request",
-				data: {
-					rules: "get_rules"
-				},
+				url: "rules",
+				data: {},
 				success: function(response) {
 					displayRules(response.rules);
 				},
@@ -60,6 +61,7 @@
 <div>
 	<h2>Play</h2>
 	<div>
+		Player: <input id="player" type="text"><br>
 		Move: <br>
 		<textarea id="move" rows="5" cols="80"></textarea>
 		<br>
