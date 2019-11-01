@@ -1,5 +1,6 @@
 :- use_module(library(http/http_unix_daemon)).
 :- use_module(library(http/http_dispatch)).
+:- use_module(library(http/http_client)).
 :- use_module(library(http/json)).
 :- use_module(library(persistency)).
 
@@ -28,7 +29,17 @@ mi(json_write(JSON,String)) :- with_output_to(string(String), json_write_dict(cu
 
 mi(findall(What,Goal,Results)) :- findall(What,mi(Goal),Results).
 
+mi(subsumes_term(Generic,Specific)) :- subsumes_term(Generic,Specific).
+
+mi(copy_term(In,Out)) :- copy_term(In,Out).
+
 mi(kb_clause(KB_Clause)) :- kb_clause(KB_Clause).
+
+mi(git_commit) :- process_create("usr/bin/git", ["--git-dir=kb", "commit", "-a", "-m"], []).
+
+%mi(http_get(URL, Data, Options)) :- http_get(URL, Data, Options).
+
+%mi(rsa_verify(Public_Key, Data, Signature, Options)) :- rsa_verify(Public_Key, Data, Signature, Options).
 
 mi(goal(Head)) :- kb_clause(Head :- Body), mi(Body).
 

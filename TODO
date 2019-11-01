@@ -1,7 +1,3 @@
-two versions of retract:
-1. syntactic/direct
-2. retract all matching
-
 player authentication
 
 game history in git repo
@@ -12,18 +8,3 @@ game history in git repo
 * bootstrapping to current state from game history
 * current ruleset should just be a text document on each commit
 * repo of game templates
-
-IRC bot
-
-current game listing -done?
-
-process move as transaction
-* i.e. it either all succeeds or nothing happens
-* can this be implemented within the game?
-
-documentation
-* from-scratch dev tutorial
-
-better web UI
-* should be more like a text editor that translates changes into retracts & asserts to check against the rules
-* handle variable names

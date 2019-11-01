@@ -12,9 +12,9 @@
 		function submitMove(){
 			var move = document.getElementById("move").value;
 			$.ajax({
-				url: "request",
+				url: "http://18.217.179.208:8080/request",
 				data: {
-					request: move
+					request: "request((" + move + "))"
 				},
 				success: function(response) {
 					displayResults(response.results);
@@ -28,9 +28,9 @@
 
 		function refreshRules(){
 			$.ajax({
-				url: "request",
+				url: "http://18.217.179.208:8080/request",
 				data: {
-					rules: "get_rules"
+					request: "get_internal_rules"
 				},
 				success: function(response) {
 					displayRules(response.rules);
@@ -44,7 +44,7 @@
 		function displayRules(rules){
 			$("#rules").html("");
 			$.each(rules, function(index, value){
-				$("#rules").append("<div>" + value + "</div>");
+				$("#rules").append("<div style=\"padding-top:5px;padding-bottom:5px\">" + value + "</div>");
 			});
 		}
 		function displayResults(results){
