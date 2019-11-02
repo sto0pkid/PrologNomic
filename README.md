@@ -6,15 +6,18 @@ A Nomic game platform based on SWI-Prolog.
 ##### Install SWI-Prolog
 https://www.swi-prolog.org/Download.html
 
-##### Clone the PrologNomic repository
-`
+##### Clone the PrologNomic repository and initialize submodules
+```
 git clone https://github.com/sto0pkid/PrologNomic
-`
+cd PrologNomic
+git submodule init
+git submodule update
+```
 
 ##### Run the node, with access through port `<port>`:
-`
+```
 swipl -s primary_metainterpreter.pl --fork=no --http=<port> --interactive=true
-`
+```
 
 ##### You're all set-up
 To view the game interface, point your browser to `localhost:<port>`

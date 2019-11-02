@@ -7,12 +7,13 @@
 			  crossorigin="anonymous">
 	</script>
 	<script>
+		var site_location = window.location.href;
 		$( refreshRules );
 
 		function submitMove(){
 			var move = document.getElementById("move").value;
 			$.ajax({
-				url: "http://18.217.179.208:8080/request",
+				url: "request",
 				data: {
 					request: "request((" + move + "))"
 				},
@@ -28,7 +29,7 @@
 
 		function refreshRules(){
 			$.ajax({
-				url: "http://18.217.179.208:8080/request",
+				url: "request",
 				data: {
 					request: "get_internal_rules"
 				},
