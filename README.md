@@ -3,7 +3,7 @@
 A Nomic game platform based on SWI-Prolog.
 
 ### Installation
-##### Install SWI-Prolog
+##### Install SWI-Prolog 8.0.3
 https://www.swi-prolog.org/Download.html
 
 ##### Clone the PrologNomic repository and initialize submodules
