@@ -1,7 +1,5 @@
 :- module(game, [run/3, kb_clause/1]).
 
-:- use_module(library(yall)).
-
 :- [persistence].
 
 mi(true) :- !.

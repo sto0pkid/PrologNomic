@@ -1,4 +1,6 @@
 player authentication
+* sessions for guests
+* public-key crypto
 
 game history in git repo
 * allow forking of game through UI

@@ -3,18 +3,21 @@
 A Nomic game platform based on SWI-Prolog.
 
 ### Installation
-##### Install SWI-Prolog
+##### Install SWI-Prolog 8.0.3
 https://www.swi-prolog.org/Download.html
 
-##### Clone the PrologNomic repository
-`
+##### Clone the PrologNomic repository and initialize submodules
+```
 git clone https://github.com/sto0pkid/PrologNomic
-`
+cd PrologNomic
+git submodule init
+git submodule update
+```
 
 ##### Run the node, with access through port `<port>`:
-`
+```
 swipl -s primary_metainterpreter.pl --fork=no --http=<port> --interactive=true
-`
+```
 
 ##### You're all set-up
 To view the game interface, point your browser to `localhost:<port>`
@@ -23,17 +26,18 @@ To view the game interface, point your browser to `localhost:<port>`
 ### How to Play
 A move is made by submitting any Prolog code (actually only a limited fragment of Prolog is supported). The "Current Rules" represent the current Prolog knowledge-base. A move is a query against this knowledge base. For example, if the current ruleset is:
 
-`loves(alice,tacos)
+```
+loves(alice,tacos)
 loves(alice,burritos)
 loves(bob,pancakes)
-`
+```
 
 then the move `loves(alice,What)` will return the results:
 
-`
+```
 loves(alice,tacos)
 loves(alice,burritos)
-`
+```
 
 Variables are represented as uppercase terms, for example in `loves(alice,What)`, the term alice is a literal term, but the term What is a variable that can match with any other term.
 
