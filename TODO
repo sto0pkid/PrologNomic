@@ -4,7 +4,22 @@ player authentication
 
 game history in git repo
 * allow forking of game through UI
-* game history as submodule
+	* git branch
+* move to different game state
+	* implicit forking
 * bootstrapping to current state from game history
+	* save history of asserts/retracts
+	* verify that each assert/retract move satisfies the rules that existed at the time the move was made
 * current ruleset should just be a text document on each commit
 * repo of game templates
+
+coherence between meta-levels
+
+networking
+
+verification
+
+parser for the reduced prolog
+
+dealing with computational complexity
+* infinite loops

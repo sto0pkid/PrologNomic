@@ -6,7 +6,7 @@
 
 :- persistent kb_clause(term:any).
 
-:- db_attach('kb/mi_test.pl', []).
+:- db_attach('GameHistory/history.pl', []).
 
 :- http_handler(root(.), http_reply_file('index.html',[]), []).
 :- http_handler(root(request), io, []).
@@ -35,7 +35,12 @@ mi(copy_term(In,Out)) :- copy_term(In,Out).
 
 mi(kb_clause(KB_Clause)) :- kb_clause(KB_Clause).
 
-mi(git_commit) :- process_create("usr/bin/git", ["--git-dir=kb", "commit", "-a", "-m"], []).
+mi(git_commit) :- 
+	setup_call_cleanup(
+		process_create("/usr/bin/git", ["--git-dir=.git/modules/GameHistory", "commit", "-a", "-m", "Updating game history"], []),
+		true,
+		true
+	).
 
 %mi(http_get(URL, Data, Options)) :- http_get(URL, Data, Options).
 
