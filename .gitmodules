@@ -1,0 +1,3 @@
+[submodule "GameHistory"]
+	path = GameHistory
+	url = https://github.com/sto0pkid/GameHistory
